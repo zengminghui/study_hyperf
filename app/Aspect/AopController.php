@@ -41,9 +41,9 @@ class AopController extends AbstractAspect
         // 切面切入后，执行对应的方法会由此来负责
         // $proceedingJoinPoint 为连接点，通过该类的 process() 方法调用原方法并获得结果
         // 在调用前进行某些处理
-        var_dump('befor');
+//        var_dump('befor');
         $result = $proceedingJoinPoint->process();
-        var_dump('after');
+//        var_dump('after');
         //对注解进行切入
         /** @var Foo $foo */
         $foo = $proceedingJoinPoint->getAnnotationMetadata()->class[Foo::class];
