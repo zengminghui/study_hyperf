@@ -11,17 +11,24 @@ declare(strict_types=1);
  */
 
 namespace App\Controller;
+use App\Rpc\CalculatorServiceInterface;
+use Hyperf\Di\Annotation\Inject;
+use Hyperf\HttpServer\Annotation\AutoController;
 
+/**
+ * rpc 服务消费者
+ * Class IndexController
+ * @AutoController()
+ */
 class IndexController extends AbstractController
 {
+    /**
+     * @Inject()
+     * @var CalculatorServiceInterface
+     */
+    private $CalculatorService;
     public function index()
     {
-        $user = $this->request->input('user', 'Hyperf');
-        $method = $this->request->getMethod();
-
-        return [
-            'method' => $method,
-            'message' => "Hello {$user}.",
-        ];
+        return $this->CalculatorService->minus(15,2);
     }
 }
