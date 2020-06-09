@@ -28,7 +28,6 @@ class IndexController extends AbstractController
     protected $task;
     public function task()
     {
-        microtime()
         $result = $this->task->handle(Coroutine::id());
         return $this->response->json($result);
     }
